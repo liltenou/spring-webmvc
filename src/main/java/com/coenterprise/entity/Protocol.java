@@ -17,7 +17,7 @@ public class Protocol {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
-	private Long id;
+	private Integer id;
 
 	@Column(name = "PROTOCOL")
 	private String protocol;
@@ -31,7 +31,8 @@ public class Protocol {
 	@Transient
 	private Date lastLoginOn;
 
-	public long getId() {
+
+	public Integer getId() {
 		return id;
 	}
 
@@ -51,7 +52,7 @@ public class Protocol {
 		this.lastLoginOn = lastLoginOn;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

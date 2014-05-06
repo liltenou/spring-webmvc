@@ -1,1 +1,0 @@
-<jsp:forward page="/listprotocols.jsp"></jsp:forward>

@@ -26,8 +26,8 @@ public abstract class AbstractDaoImpl<E, I extends Serializable> implements Abst
     }
 
     @Override
-    public E findById(I id) {
-        return (E) getCurrentSession().get(entityClass, id);
+    public E findByName(I name) {
+        return (E) getCurrentSession().get(entityClass, name);
     }
 
     @Override
