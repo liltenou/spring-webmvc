@@ -67,8 +67,18 @@ public class ProtocolDaoImpl implements ProtocolDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List getProtocols() {
-		return getCurrentSession().createQuery("from PROTOCOL").list();
+	public List  getProtocols() {
+		return getCurrentSession().createQuery("from Protocol").list();
 
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<String> getName() {
+		return getCurrentSession().createQuery("select name from Protocol").list();
+	}
+
+//	public List<Protocol> getName(String protocols) {
+//		// TODO Auto-generated method stub
+//		return getCurrentSession().createQuery("from Protocol").list();
+//	}
 }

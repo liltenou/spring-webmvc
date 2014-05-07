@@ -1,43 +1,33 @@
 package com.coenterprise.entity;
 
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.util.List;
 
-
-@Table(name = "PROTOCOL")
+@Table(name = "PARAMETER")
 @Entity
-public class Protocol {
+public class Parameter {
 
 	@Id
+	// @GeneratedValue(generator = "UniqueIDGenProParam")
+	// @SequenceGenerator(name = "UniqueIDGenProParam", sequenceName =
+	// "ID_SEQ_PRO_PARAM", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Integer id;
 
-	@Column(name = "PROTOCOL")
-	private String protocol;
-
 	@Column(name = "NAME")
 	private String name;
-	
-	@OneToMany(mappedBy = "protocolIdFk", fetch = FetchType.LAZY)
-	private List<Parameter> parameter;
 
-	public List<Parameter> getParameter() {
-		return parameter;
-	}
-
-	public void setParameter(List<Parameter> parameter) {
-		this.parameter = parameter;
-	}
+	@ManyToOne //(fetch = FetchType.LAZY)
+	@JoinColumn(name = "PROTOCOL_ID_FK", referencedColumnName="ID")
+	private Protocol protocolIdFk;
 
 	public Integer getId() {
 		return id;
@@ -47,14 +37,6 @@ public class Protocol {
 		this.id = id;
 	}
 
-	public String getProtocol() {
-		return protocol;
-	}
-
-	public void setProtocol(String protocol) {
-		this.protocol = protocol;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -62,5 +44,14 @@ public class Protocol {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public Protocol getProtocolIdFk() {
+		return protocolIdFk;
+	}
+
+	public void setProtocolIdFk(Protocol protocolIdFk) {
+		this.protocolIdFk = protocolIdFk;
+	}
+
 
 }

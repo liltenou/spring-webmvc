@@ -67,4 +67,7 @@ public class ProtocolServiceImpl implements ProtocolService {
 	public List getProtocols() {
 		return protocolDao.getProtocols();
 	}
+	public List <String> getName() {
+		return protocolDao.getName();
+	}
 }

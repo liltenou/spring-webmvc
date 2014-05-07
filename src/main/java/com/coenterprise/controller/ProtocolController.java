@@ -84,7 +84,7 @@ public class ProtocolController {
 			return modelAndView;
 		}
 	//add Protocol
-	@RequestMapping(value="/protocol/add/process")
+	@RequestMapping(value="/protocol/add/process", method=RequestMethod.POST)
 		public ModelAndView addingProtocol(@ModelAttribute Protocol protocol) {
 		
 		ModelAndView modelAndView = new ModelAndView("protocol");
@@ -96,15 +96,15 @@ public class ProtocolController {
 		return modelAndView;
 	}
 	
-	//list protocols
-	@RequestMapping(value="/protocol/list")
-		public ModelAndView listProtocols() {
-		ModelAndView modelAndView = new ModelAndView("listprotocols");
-		List
-		protocols = protocolService.getProtocols();
-		modelAndView.addObject("protocols", protocols);
-		return modelAndView;
-	}
+//	//list protocols
+//	@RequestMapping(value="/parameter/add", method=RequestMethod.GET)
+//		public ModelAndView listProtocols() {
+//		ModelAndView modelAndView = new ModelAndView("parameter");
+//		List
+//		protocols = protocolService.getProtocols();
+//		modelAndView.addObject("protocols", protocols);
+//		return modelAndView;
+//	}
 	//get protocol to edit
 	@RequestMapping(value="/protocol/edit/{id}", method=RequestMethod.GET)
 	public ModelAndView editProtocolPage(@PathVariable Integer id) {
