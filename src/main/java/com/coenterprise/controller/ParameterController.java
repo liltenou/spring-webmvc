@@ -82,7 +82,7 @@ public class ParameterController {
 
 	// add protocol to dropdown
 	@RequestMapping(value = "/parameter/add", method=RequestMethod.GET)
-	public ModelAndView dropdownProtocolName() {
+	public ModelAndView dropdownProtocolName(@ModelAttribute("command") Parameter parameter) {
 		ModelAndView modelAndView = new ModelAndView("parameter");
 		List <String> protocolName = protocolService.getName();
 		List <Integer> protocolId = protocolService.getId();
@@ -105,10 +105,13 @@ public class ParameterController {
 
 	// add Parameter
 	@RequestMapping(value = "/parameter/add/process", method=RequestMethod.POST)
-	public ModelAndView addingParameter(@ModelAttribute Parameter parameter) {
+	public ModelAndView addingParameter(@ModelAttribute("command") Parameter parameter) {
 
 		ModelAndView modelAndView = new ModelAndView("parameter");
 		parameterService.addParameter(parameter);
+//		protocolService.addProtocol(parameter);
+		
+		
 //		parameter.setProtoccolIdFk(protocolIdFk);
 
 		String message = "Parameter successfully added.";
