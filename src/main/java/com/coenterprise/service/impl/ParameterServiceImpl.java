@@ -64,7 +64,7 @@ public class ParameterServiceImpl implements ParameterService {
 	public void deleteParameter(int id) {
 		parameterDao.deleteParameter(id);
 	}
-	public List getParameters() {
+	public List <Parameter>getParameters() {
 		return parameterDao.getParameters();
 	}
 }

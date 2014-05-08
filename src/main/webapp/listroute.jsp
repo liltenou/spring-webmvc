@@ -9,7 +9,7 @@
 
 		<a class="btn btn-primary icon add-file" href=<c:url value="/addnew.jsp" /> type="button">Add
 			New File Transfer</a> <a class="btn btn-primary icon add-file"
-			href=<c:url value="/listprotocols.jsp"/> type="button">Protocol Properties List</a>
+			href=<c:url value="/parameter/list"/> type="button">Protocol Properties List</a>
 		<hr>
 		<div class="navbar navbar-default">
 			<div class="navbar-header">

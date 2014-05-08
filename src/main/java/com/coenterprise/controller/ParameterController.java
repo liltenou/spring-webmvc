@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Date;
+
 import java.util.List;
-import java.util.ArrayList;
 
 //@Controller
 //public class ParameterController {
@@ -82,30 +81,35 @@ public class ParameterController {
 	private ProtocolService protocolService;
 
 	// add protocol to dropdown
-	@RequestMapping(value = "/parameter/add", method = RequestMethod.GET)
+	@RequestMapping(value = "/parameter/add", method=RequestMethod.GET)
 	public ModelAndView dropdownProtocolName() {
 		ModelAndView modelAndView = new ModelAndView("parameter");
 		List <String> protocolName = protocolService.getName();
+		List <Integer> protocolId = protocolService.getId();
+		List <Protocol> listProtocolName = protocolService.getProtocols();
+		modelAndView.addObject("listProtocolName", listProtocolName);
 		modelAndView.addObject("protocolName", protocolName); 
-		modelAndView.addObject("protocols", new Parameter());
+		modelAndView.addObject("name", new Parameter());
+		modelAndView.addObject("protocolId", protocolId); //
 		return modelAndView;
 	}
 	
 
-	// view add Parameter page
-	@RequestMapping(value = "/parameter/add")
-	public ModelAndView addParameterPage() {
-		ModelAndView modelAndView = new ModelAndView("parameter");
-		modelAndView.addObject("name", new Parameter());
-		return modelAndView;
-	}
+//	// view add Parameter page
+//	@RequestMapping(value = "/parameter/add")
+//	public ModelAndView addParameterPage() {
+//		ModelAndView modelAndView = new ModelAndView("parameter");
+//		modelAndView.addObject("name", new Parameter());
+//		return modelAndView;
+//	}
 
 	// add Parameter
-	@RequestMapping(value = "/parameter/add/process", method = RequestMethod.POST)
+	@RequestMapping(value = "/parameter/add/process", method=RequestMethod.POST)
 	public ModelAndView addingParameter(@ModelAttribute Parameter parameter) {
 
 		ModelAndView modelAndView = new ModelAndView("parameter");
 		parameterService.addParameter(parameter);
+//		parameter.setProtoccolIdFk(protocolIdFk);
 
 		String message = "Parameter successfully added.";
 		modelAndView.addObject("message", message);
@@ -124,8 +128,8 @@ public class ParameterController {
 	@RequestMapping(value = "/parameter/list", method = RequestMethod.GET)
 	public ModelAndView listParameters() {
 		ModelAndView modelAndView = new ModelAndView("listprotocols");
-		List protocols = protocolService.getProtocols();
-		modelAndView.addObject("protocols", protocols);
+		List <Protocol> listProtocols = protocolService.getProtocols();
+		modelAndView.addObject("listProtocols", listProtocols);
 		return modelAndView;
 	}
 	

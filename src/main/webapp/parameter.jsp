@@ -12,13 +12,13 @@
 		<div class="accordion" id="accordion2">
 			<div class="accordion-group">
 
-				<form:form method="POST" commandName="protocols" action="/parameter/add/process">
-				<c:forEach var="protocol" items="${protocolName}"></c:forEach>
+				<form:form method="POST" commandName="name" action="${pageContext.request.contextPath}/parameter/add/process">
+<%-- 				<c:forEach var="protocol" items="${protocolName}"></c:forEach> --%>
 					<div class="form-group">
 						<div class="field">
-							<form:select path="protocolIdFk">
-							 <form:option value="-" label="-- Select Protocol --">  </form:option>
-								<form:options items="${protocolName}" />
+							<form:select path="protocolIdFk" required="true" >
+							 <form:option value="${null}" label="-- Select Protocol --">  </form:option>
+								<form:options items="${protocolId}"/>
 							</form:select>
 
 
@@ -34,7 +34,7 @@
 						</div>
 						<div class="field">
 							<input class="form-control" type="text" pattern=".+" required
-								placeholder="Add Parameter" name="parameter" path="name"/> <Label>Description</Label>
+								placeholder="Add Parameter" name="name" path="name"/> <Label>Add Parameter</Label>
 						</div>
 						<div class="field">
 							<button type="button" class="btn icon save"

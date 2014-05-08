@@ -67,7 +67,7 @@ public class ParameterDaoImpl implements ParameterDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List getParameters() {
+	public List <Parameter> getParameters() {
 		return getCurrentSession().createQuery("from Parameter").list();
 
 	}

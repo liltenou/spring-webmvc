@@ -16,5 +16,5 @@ public interface ParameterService {
 	public void editParameter(Parameter parameter);
 	public Parameter getParameter(int id);
 	public void deleteParameter(int id);
-	public List getParameters();
+	public List <Parameter>getParameters();
 }

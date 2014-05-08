@@ -18,6 +18,7 @@ public interface ProtocolService {
 	public void editProtocol(Protocol protocol);
 	public Protocol getProtocol(int id);
 	public void deleteProtocol(int id);
-	public List  getProtocols();
+	public List <Protocol> getProtocols();
 	public List <String> getName();
+	public List <Integer> getId();
 }

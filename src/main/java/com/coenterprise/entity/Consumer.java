@@ -34,6 +34,14 @@ public class Consumer {
 	@Id	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(name = "NAME") private String name;
+
+	@ManyToOne @JoinColumn(name = "PROTOCOL_ID_FK", referencedColumnName="ID")
+	private Protocol protocolIdFk;
+	
+	@ManyToOne @JoinColumn(name = "PROCUDER_ID_FK", referencedColumnName="ID")
+	private Producer producerIdFk;
 
 	public Integer getId() {
 		return id;
@@ -66,24 +74,4 @@ public class Consumer {
 	public void setProducerIdFk(Producer producerIdFk) {
 		this.producerIdFk = producerIdFk;
 	}
-
-	public ParameterValue getParamValueIdFk() {
-		return paramValueIdFk;
-	}
-
-	public void setParamValueIdFk(ParameterValue paramValueIdFk) {
-		this.paramValueIdFk = paramValueIdFk;
-	}
-
-	@Column(name = "NAME") private String name;
-
-	@ManyToOne @JoinColumn(name = "PROTOCOL_ID_FK", referencedColumnName="ID")
-	private Protocol protocolIdFk;
-	
-	@ManyToOne @JoinColumn(name = "PROCUDER_ID_FK", referencedColumnName="ID")
-	private Producer producerIdFk;
-	
-	@ManyToOne @JoinColumn(name = "PARAM_VALUE_ID_FK", referencedColumnName="ID")
-	private ParameterValue paramValueIdFk;
-
 }

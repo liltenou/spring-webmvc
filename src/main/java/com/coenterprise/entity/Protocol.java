@@ -1,7 +1,5 @@
 package com.coenterprise.entity;
 
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,8 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.util.List;
 
+import java.util.Set;
 
 @Table(name = "PROTOCOL")
 @Entity
@@ -27,17 +25,9 @@ public class Protocol {
 
 	@Column(name = "NAME")
 	private String name;
-	
+
 	@OneToMany(mappedBy = "protocolIdFk", fetch = FetchType.LAZY)
-	private List<Parameter> parameter;
-
-	public List<Parameter> getParameter() {
-		return parameter;
-	}
-
-	public void setParameter(List<Parameter> parameter) {
-		this.parameter = parameter;
-	}
+	private Set<Parameter> parameter;
 
 	public Integer getId() {
 		return id;
@@ -63,4 +53,11 @@ public class Protocol {
 		this.name = name;
 	}
 
+	public Set<Parameter> getParameter() {
+		return parameter;
+	}
+
+	public void setParameter(Set<Parameter> parameter) {
+		this.parameter = parameter;
+	}
 }
