@@ -1,21 +1,20 @@
 package com.coenterprise.controller;
 
-import com.coenterprise.entity.Parameter;
-import com.coenterprise.entity.Protocol;
-import com.coenterprise.service.ParameterService;
-import com.coenterprise.service.ProtocolService;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-
-import java.util.List;
+import com.coenterprise.entity.Parameter;
+import com.coenterprise.entity.Protocol;
+import com.coenterprise.proxy.ParameterProxy;
+import com.coenterprise.service.ParameterService;
+import com.coenterprise.service.ProtocolService;
 
 //@Controller
 //public class ParameterController {
@@ -105,14 +104,12 @@ public class ParameterController {
 
 	// add Parameter
 	@RequestMapping(value = "/parameter/add/process", method=RequestMethod.POST)
-	public ModelAndView addingParameter(@ModelAttribute("command") Parameter parameter) {
-
-		ModelAndView modelAndView = new ModelAndView("parameter");
+	public ModelAndView addingParameter(@ModelAttribute("command") ParameterProxy parameter) {
+		
 		parameterService.addParameter(parameter);
-//		protocolService.addProtocol(parameter);
-		
-		
-//		parameter.setProtoccolIdFk(protocolIdFk);
+				
+		ModelAndView modelAndView = new ModelAndView("redirect:/parameter/add");
+
 
 		String message = "Parameter successfully added.";
 		modelAndView.addObject("message", message);
@@ -120,14 +117,7 @@ public class ParameterController {
 		return modelAndView;
 	}
 
-	// list parameters
-//	@RequestMapping(value = "/parameter/list", method = RequestMethod.GET)
-//	public ModelAndView listParameters() {
-//		ModelAndView modelAndView = new ModelAndView("listprotocols");
-//		List parameters = parameterService.getParameters();
-//		modelAndView.addObject("parameters", parameters);
-//		return modelAndView;
-//	}
+
 	@RequestMapping(value = "/parameter/list", method = RequestMethod.GET)
 	public ModelAndView listParameters() {
 		ModelAndView modelAndView = new ModelAndView("listprotocols");

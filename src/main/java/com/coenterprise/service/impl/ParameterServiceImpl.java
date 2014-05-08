@@ -1,14 +1,17 @@
 package com.coenterprise.service.impl;
 
-import com.coenterprise.dao.ParameterDao;
-import com.coenterprise.entity.Parameter;
-import com.coenterprise.service.ParameterService;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.coenterprise.dao.ParameterDao;
+import com.coenterprise.dao.ProtocolDao;
+import com.coenterprise.entity.Parameter;
+import com.coenterprise.entity.Protocol;
+import com.coenterprise.proxy.ParameterProxy;
+import com.coenterprise.service.ParameterService;
 
 //@Service("parameterService")
 //@Transactional(readOnly = true)
@@ -52,7 +55,21 @@ public class ParameterServiceImpl implements ParameterService {
 	@Autowired
 	private ParameterDao parameterDao;
 	
-	public void addParameter(Parameter parameter){
+	@Autowired
+	private ProtocolDao protocolDao;
+	
+	public void addParameter(ParameterProxy parameterProxy){
+		
+		Protocol protocol = protocolDao.getProtocol(parameterProxy.getProtocolIdFk());
+		
+//		if(protocol == null){
+//			throw some exception
+//		}
+		
+		Parameter parameter = new Parameter();
+		parameter.setProtocolIdFk(protocol);
+		parameter.setName(parameterProxy.getName());
+		
 		parameterDao.addParameter(parameter);
 	}
 	public void editParameter(Parameter parameter) {

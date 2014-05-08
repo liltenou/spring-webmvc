@@ -28,8 +28,8 @@
 			<tr>
 				<th>#</th>
 				<th>Description</th>
-				<th>Parameter</th>
 				<th>Protocol</th>
+				<th>Parameter</th>
 				<th>Edit | Delete</th>
 			</tr>
 		</thead>
@@ -39,14 +39,16 @@
 				<tr>
 					<td>${protocol.id}</td>
 					<td>${protocol.name}</td>
-					<td></td>
 					<td>${protocol.protocol}</td>
+					<td><c:forEach var="t" items="${protocol.parameter}">${t.name}</c:forEach></td>
 					<td><a
 						href="${pageContext.request.contextPath}/protocol/edit/${protocol.id}">Edit</a>
 						| <a
 						href="${pageContext.request.contextPath}/protocol/delete${protocol.id}">Delete</a></td>
 				</tr>
 			</c:forEach>
+
+
 		</tbody>
 	</table>
 	<!-- end list existing file transfer -->

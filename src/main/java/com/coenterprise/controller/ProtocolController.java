@@ -75,64 +75,66 @@ import java.util.List;
 public class ProtocolController {
 	@Autowired
 	private ProtocolService protocolService;
-	
-	//view add Protocol page
-	@RequestMapping(value="/protocol/add")
-		public ModelAndView addProtocolPage(){
-			ModelAndView modelAndView = new ModelAndView("protocol");
-			modelAndView.addObject("name", new Protocol());
-			return modelAndView;
-		}
-	//add Protocol
-	@RequestMapping(value="/protocol/add/process", method=RequestMethod.POST)
-		public ModelAndView addingProtocol(@ModelAttribute Protocol protocol) {
-		
+
+	// view add Protocol page
+	@RequestMapping(value = "/protocol/add")
+	public ModelAndView addProtocolPage() {
 		ModelAndView modelAndView = new ModelAndView("protocol");
-		protocolService.addProtocol(protocol);
-		
-		String message = "Protocol successfully added.";
-		modelAndView.addObject("message", message);
-		
+		modelAndView.addObject("name", new Protocol());
 		return modelAndView;
 	}
-	
-//	//list protocols
-//	@RequestMapping(value="/parameter/add", method=RequestMethod.GET)
-//		public ModelAndView listProtocols() {
-//		ModelAndView modelAndView = new ModelAndView("parameter");
-//		List
-//		protocols = protocolService.getProtocols();
-//		modelAndView.addObject("protocols", protocols);
-//		return modelAndView;
-//	}
-	//get protocol to edit
-	@RequestMapping(value="/protocol/edit/{id}", method=RequestMethod.GET)
+
+	// add Protocol
+	@RequestMapping(value = "/protocol/add/process", method = RequestMethod.POST)
+	public ModelAndView addingProtocol(@ModelAttribute Protocol protocol) {
+
+		ModelAndView modelAndView = new ModelAndView("protocol");
+		protocolService.addProtocol(protocol);
+
+		String message = "Protocol successfully added.";
+		modelAndView.addObject("message", message);
+
+		return modelAndView;
+	}
+
+	// //list protocols
+	// @RequestMapping(value="/parameter/add", method=RequestMethod.GET)
+	// public ModelAndView listProtocols() {
+	// ModelAndView modelAndView = new ModelAndView("parameter");
+	// List
+	// protocols = protocolService.getProtocols();
+	// modelAndView.addObject("protocols", protocols);
+	// return modelAndView;
+	// }
+	// get protocol to edit
+	@RequestMapping(value = "/protocol/edit/{id}", method = RequestMethod.GET)
 	public ModelAndView editProtocolPage(@PathVariable Integer id) {
-	ModelAndView modeAndView = new ModelAndView("protocol");
-	Protocol protocol = protocolService.getProtocol(id);
-	modeAndView.addObject("protocol", protocol);
-	return modeAndView;
+		ModelAndView modeAndView = new ModelAndView("protocol");
+		Protocol protocol = protocolService.getProtocol(id);
+		modeAndView.addObject("protocol", protocol);
+		return modeAndView;
 	}
-	
-	//edit protocol
-	@RequestMapping(value="/protocol/edit/{id}", method=RequestMethod.POST)
-	public ModelAndView editProtocol(@ModelAttribute Protocol protocol, @PathVariable Integer id){
-	ModelAndView modelAndView = new ModelAndView("protocol");
-	
-	protocolService.editProtocol(protocol);
-	String message = "Protocol was successfully updated.";
-	modelAndView.addObject("message", message);
-	
-	return modelAndView;
+
+	// edit protocol
+	@RequestMapping(value = "/protocol/edit/{id}", method = RequestMethod.POST)
+	public ModelAndView editProtocol(@ModelAttribute Protocol protocol,
+			@PathVariable Integer id) {
+		ModelAndView modelAndView = new ModelAndView("protocol");
+
+		protocolService.editProtocol(protocol);
+		String message = "Protocol was successfully updated.";
+		modelAndView.addObject("message", message);
+
+		return modelAndView;
 	}
-	
-	//delete protocol
-	@RequestMapping(value = "protocol/delete/{id}", method=RequestMethod.GET)
+
+	// delete protocol
+	@RequestMapping(value = "protocol/delete/{id}", method = RequestMethod.GET)
 	public ModelAndView deleteProtocol(@PathVariable Integer id) {
-	ModelAndView modelAndView = new ModelAndView("protocol");
-	protocolService.deleteProtocol(id);
-	String message = "Protocol has been deleted.";
-	modelAndView.addObject("message", message);
-	return modelAndView;
+		ModelAndView modelAndView = new ModelAndView("protocol");
+		protocolService.deleteProtocol(id);
+		String message = "Protocol has been deleted.";
+		modelAndView.addObject("message", message);
+		return modelAndView;
 	}
 }

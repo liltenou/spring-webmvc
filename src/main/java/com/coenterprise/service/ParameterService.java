@@ -1,8 +1,9 @@
 package com.coenterprise.service;
 
-import com.coenterprise.entity.Parameter;
-
 import java.util.List;
+
+import com.coenterprise.entity.Parameter;
+import com.coenterprise.proxy.ParameterProxy;
 
 //public interface ParameterService extends AbstractDao<Parameter, String> {
 //    void saveParameter(Parameter parameter);
@@ -12,7 +13,7 @@ import java.util.List;
 //}
 
 public interface ParameterService {
-	public void addParameter(Parameter parameter);
+	public void addParameter(ParameterProxy parameter);
 	public void editParameter(Parameter parameter);
 	public Parameter getParameter(int id);
 	public void deleteParameter(int id);

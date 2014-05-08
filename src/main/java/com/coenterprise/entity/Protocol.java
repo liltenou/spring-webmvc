@@ -26,7 +26,7 @@ public class Protocol {
 	@Column(name = "NAME")
 	private String name;
 
-	@OneToMany(mappedBy = "protocolIdFk", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "protocolIdFk", fetch = FetchType.EAGER)
 	private Set<Parameter> parameter;
 
 	public Integer getId() {

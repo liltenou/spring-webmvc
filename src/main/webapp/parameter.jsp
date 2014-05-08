@@ -17,14 +17,13 @@
 
 				<div class="form-group">
 					<div class="field">
-						<form:select path="protocolIdFk" required="true" itemValues="id">
-							
+						<form:select class="form-control" path="protocolIdFk" required="true" itemValues="id">	
 								<form:option value="${null}" label="-- Select Protocol --">
 								</form:option><c:forEach var="protocol" items="${listProtocolName}">
 								<form:option value="${protocol.id}">${protocol.name}</form:option>
 							</c:forEach>
-							<%-- 								<form:options items="${protocolId}"/> --%>
 						</form:select>
+							<%-- 								<form:options items="${protocolId}"/> --%>
 
 
 						<!-- 							<select class="form-control" path="protocolIdFk"> -->

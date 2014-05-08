@@ -1,16 +1,15 @@
 package com.coenterprise.dao.impl;
 
-import com.coenterprise.dao.ProtocolDao;
-import com.coenterprise.entity.Protocol;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.coenterprise.dao.ProtocolDao;
+import com.coenterprise.entity.Protocol;
 
 //@Repository
 //public class ProtocolDaoImpl extends AbstractDaoImpl<Protocol, String> implements ProtocolDao {
@@ -80,7 +79,11 @@ public class ProtocolDaoImpl implements ProtocolDao {
 	public List<Integer> getId() {
 		return getCurrentSession().createQuery("select id from Protocol").list();
 	}
-	// public List <Protocol> findAllParameters() {
-	// return getCurrentSession().createQuery("select distinct )
-	// }
+
+	@Transactional
+	 public List <Protocol> findAllParameters() {
+	 List protocolAndParameter = getCurrentSession().createQuery("select distinct p from Protocol as p left join fetch p.parameter" ).list();
+	 return protocolAndParameter;
+	}
+	 
 }
