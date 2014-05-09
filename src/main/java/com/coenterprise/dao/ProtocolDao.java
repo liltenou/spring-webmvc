@@ -1,5 +1,6 @@
 package com.coenterprise.dao;
 
+
 import com.coenterprise.entity.Protocol;
 
 import java.util.List;
@@ -19,4 +20,7 @@ public interface ProtocolDao {
 	public List <Protocol> getProtocols();
 	public List <String> getName();
 	public List <Integer> getId();
+	public List<Protocol> findAllProtocolName(String searchTerm);
+
+
 }

@@ -27,7 +27,7 @@ public class Protocol {
 	private String name;
 
 	@OneToMany(mappedBy = "protocolIdFk", fetch = FetchType.EAGER)
-	private Set<Parameter> parameter;
+	private Set<Parameter> parameters;
 
 	public Integer getId() {
 		return id;
@@ -53,11 +53,11 @@ public class Protocol {
 		this.name = name;
 	}
 
-	public Set<Parameter> getParameter() {
-		return parameter;
+	public Set<Parameter> getParameters() {
+		return parameters;
 	}
 
-	public void setParameter(Set<Parameter> parameter) {
-		this.parameter = parameter;
+	public void setParameters(Set<Parameter> parameters) {
+		this.parameters = parameters;
 	}
 }

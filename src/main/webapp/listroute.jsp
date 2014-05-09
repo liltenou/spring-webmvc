@@ -7,7 +7,7 @@
 	<!-- file transfer inventory header -->
 	<div class="container">
 
-		<a class="btn btn-primary icon add-file" href=<c:url value="/addnew.jsp" /> type="button">Add
+		<a class="btn btn-primary icon add-file" href=<c:url value="/filetransfer/add" /> type="button">Add
 			New File Transfer</a> <a class="btn btn-primary icon add-file"
 			href=<c:url value="/parameter/list"/> type="button">Protocol Properties List</a>
 		<hr>
@@ -26,17 +26,15 @@
 		<table class="table table-striped table-hover ">
 			<thead>
 				<tr>
-					<th>#</th>
 					<th>Producer</th>
 					<th>Filename</th>
 					<th>Consumer</th>
-					<th>Protocol</th>
+					<th>Protocol Suite</th>
 					<th>Edit | Delete</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td></td>
 					<td>Column content</td>
 					<td>Column content</td>
 					<td>Column content</td>
@@ -45,7 +43,7 @@
 
 			</tbody>
 		</table>
-		<!-- end list existing file transfer -->
+<%@ include file="WEB-INF/common/footer.jsp"%>
 	</div>
 	<!-- end existing file transrer section  -->
 </body>

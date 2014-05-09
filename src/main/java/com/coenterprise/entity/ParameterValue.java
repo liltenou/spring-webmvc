@@ -55,6 +55,4 @@ public class ParameterValue {
 		this.parameterIdFk = parameterIdFk;
 	}
 	
-	
-
 }

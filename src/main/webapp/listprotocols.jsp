@@ -18,16 +18,14 @@
 		<div class="navbar-header">
 			<div class="navbar-brand">Protocol / Parameter Inventory</div>
 		</div>
-		<form action="#" class="navbar-form pull-right">
-			<input class="form-control col-md-8" name="searchInv" type="text"
-				placeholder="Search" id="searchInv"></input>
+		<form method="GET" action="${pageContext.request.contextPath}/parameter/list" class="navbar-form pull-right">
+			<input type="search" class="form-control col-md-8" name="q" placeholder="Search" id="protocolName" value="${searchTerm}"/>
 		</form>
 	</div>
 	<table class="table table-striped table-hover">
 		<thead>
 			<tr>
-				<th>#</th>
-				<th>Description</th>
+				<th>Protocol Suite</th>
 				<th>Protocol</th>
 				<th>Parameter</th>
 				<th>Edit | Delete</th>
@@ -35,24 +33,22 @@
 		</thead>
 		<tbody>
 			<c:forEach items="${listProtocols}" var="protocol">
-
-				<tr>
-					<td>${protocol.id}</td>
-					<td>${protocol.name}</td>
-					<td>${protocol.protocol}</td>
-					<td><c:forEach var="t" items="${protocol.parameter}">${t.name}</c:forEach></td>
-					<td><a
-						href="${pageContext.request.contextPath}/protocol/edit/${protocol.id}">Edit</a>
-						| <a
-						href="${pageContext.request.contextPath}/protocol/delete${protocol.id}">Delete</a></td>
-				</tr>
+				<c:forEach var="parameter" items="${protocol.parameters}">
+					<tr>
+						<td>${protocol.name}</td>
+						<td>${protocol.protocol}</td>
+						<td>${parameter.name}</td>
+						<td><a
+							href="${pageContext.request.contextPath}/parameter/edit/${parameter.id}">Edit</a>
+							| <a
+							href="${pageContext.request.contextPath}/parameter/delete/${parameter.id}">Delete</a></td>
+					</tr>
+				</c:forEach>
 			</c:forEach>
-
-
 		</tbody>
 	</table>
-	<!-- end list existing file transfer -->
+<%@ include file="WEB-INF/common/footer.jsp"%>
 </div>
-<!-- end existing file transfer section  -->
+
 </body>
 </html>

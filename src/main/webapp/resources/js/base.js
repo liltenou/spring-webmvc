@@ -1,21 +1,18 @@
 //add new file transfer
-function add_consumer() {
-	var newPropertyContainer = $('#consumer-group');
-	var newPropertyElement = $('<div class="form-group" id="consumer-group"><div class="field"><input class="form-control" type="text" pattern=".+" required placeholder="Consumer" name="consumer"><Label>Consumer</Label></div> <div class="field"><select class="form-control"><option>Select Protocol</option><option>----------------</option><option>ConnectDirect</option><option>FTP</option><option>Mailbox</option><option>SFTP</option></select></div> <div class="field"><button type="text" class="btn icon save" onclick="add_property();">Save</button></div> <div class="field"><button type="button" class="btn icon delete">Delete</button></div></div>');
-	newPropertyContainer.append(newPropertyElement);
-	//document.getElementById('consumer-group').innerHTML +='<div class="form-group" id="consumer-group"><div class="field"><input class="form-control" type="text" pattern=".+" required placeholder="Consumer" name="consumer"><Label>Consumer</Label></div> <div class="field"><select class="form-control"><option>Select Protocol</option><option>----------------</option><option>ConnectDirect</option><option>FTP</option><option>Mailbox</option><option>SFTP</option></select></div> <div class="field"><button type="text" class="btn icon save" onclick="add_property();">Save</button></div> <div class="field"><button type="button" class="btn icon delete">Delete</button></div></div>'
-}
+//function add_consumer() {
+//	var newPropertyContainer = $('#consumer-group');
+//	var newPropertyElement = $('<div class="form-group" id="consumer-group"><div class="field"><input class="form-control" type="text" pattern=".+" required placeholder="Consumer" name="consumer"><Label>Consumer</Label></div> <div class="field"><form:select class="form-control" path="protocolIdFk" required="true" itemValues="id"><form:option value="${null}" label="-- Select Protocol --"></form:option><c:forEach var="protocol" items="${listProtocolName}"><form:option value="${protocol.id}">${protocol.name}</form:option></c:forEach></form:select></div> <div class="field"><button type="text" class="btn icon save" onclick="add_property();">Save</button></div> <div class="field"><button type="button" class="btn icon delete">Delete</button></div></div>');
+//	newPropertyContainer.append(newPropertyElement);
+//}
 function add_property() {
 	var newPropertyContainer = $('#property-group');
 	var newPropertyElement = $('<div class="form-group" id="property-group"> <div class="field">	<input class="form-control" type="text" required placeholder="Property" name="property" /><label for="property">Property</label></div> <div class="field"> <input class="form-control" type="text" required placeholder="Value" name="value" id="property_2" /> <label for="value">Value</label></div> <div class="field">	<button type="text" name="add-property" class="btn icon add-property" onclick="add_new_property();">Add Property</button></div></div>');
 	newPropertyContainer.append(newPropertyElement);
-	//document.getElementById('property-group').innerHTML +='<div class="form-group" id="property-group"> <div class="field">	<input class="form-control" type="text" required placeholder="Property" name="property" /><label for="property">Property</label></div> <div class="field"> <input class="form-control" type="text" required placeholder="Value" name="value" id="property_2" /> <label for="value">Value</label></div> <div class="field">	<button type="text" name="add-property" class="btn icon add-property" onclick="add_new_property();">Add Property</button></div></div>'	
 }
 function add_new_property() {
 	var newPropertyContainer = $('#property-group');
 	var newPropertyElement = $('<div class="form-group"> <div class="field"><input class="form-control"  type="text" required placeholder="Property" name="property" /><label for="property">Property</label></div> <div class="field"><input class="form-control" type="text" required placeholder="Value" name="value" id="property_2" /> <label for="value">Value</label> </div> </div>');
 	newPropertyContainer.append(newPropertyElement);
-//	document.getElementById('property-new').innerHTML +='<div class="form-group"> <div class="field"><input class="form-control"  type="text" required placeholder="Property" name="property" /><label for="property">Property</label></div> <div class="field"><input class="form-control" type="text" required placeholder="Value" name="value" id="property_2" /> <label for="value">Value</label> </div> </div>';
 }
 
 //Add new parameter page
@@ -28,10 +25,9 @@ function add_new_parameter() {
 	var newPropertyContainer = $('#parameter-group');
 	var newPropertyElement = $('<div class="form-group"> <div class="field"><input class="form-control"  type="text" required placeholder="Parameter" name="new_parameter" /><label for="new_parameter">Paramater</label></div> </div>');
 	newPropertyContainer.append(newPropertyElement);
-//	document.getElementById('property-new').innerHTML +='<div class="form-group"> <div class="field"><input class="form-control"  type="text" required placeholder="Property" name="property" /><label for="property">Property</label></div> <div class="field"><input class="form-control" type="text" required placeholder="Value" name="value" id="property_2" /> <label for="value">Value</label> </div> </div>';
 }
 
-//\r\n
+
 
 
 $('.form-group').each(function() {

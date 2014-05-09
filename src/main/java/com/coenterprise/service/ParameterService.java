@@ -14,8 +14,9 @@ import com.coenterprise.proxy.ParameterProxy;
 
 public interface ParameterService {
 	public void addParameter(ParameterProxy parameter);
-	public void editParameter(Parameter parameter);
+	public void editParameter(ParameterProxy parameter);
 	public Parameter getParameter(int id);
 	public void deleteParameter(int id);
 	public List <Parameter>getParameters();
+	public List<String> getName();
 }

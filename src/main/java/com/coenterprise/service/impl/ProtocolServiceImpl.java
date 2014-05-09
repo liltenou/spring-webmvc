@@ -50,33 +50,37 @@ import java.util.List;
 public class ProtocolServiceImpl implements ProtocolService {
 	@Autowired
 	private ProtocolDao protocolDao;
-
+	@Transactional
 	public void addProtocol(Protocol protocol) {
 		protocolDao.addProtocol(protocol);
 	}
-
+	@Transactional
 	public void editProtocol(Protocol protocol) {
 		protocolDao.editProtocol(protocol);
 	}
-
+	@Transactional
 	public Protocol getProtocol(int id) {
 		return protocolDao.getProtocol(id);
 	}
-
+	@Transactional
 	public void deleteProtocol(int id) {
 		protocolDao.deleteProtocol(id);
 	}
-
+	@Transactional
 	public List <Protocol> getProtocols() {
 		return protocolDao.getProtocols();
 	}
-
+	@Transactional
 	public List<String> getName() {
 		return protocolDao.getName();
 	}
-
+	@Transactional
 	public List<Integer> getId() {
 		return protocolDao.getId();
+	}
+	@Transactional
+	public List<Protocol> findAllProtocolName(String searchTerm) {
+		return protocolDao.findAllProtocolName(searchTerm);
 	}
 
 }
