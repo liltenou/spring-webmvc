@@ -10,6 +10,7 @@ import com.coenterprise.dao.ConsumerDao;
 import com.coenterprise.dao.ParameterDao;
 import com.coenterprise.dao.ParameterValueDao;
 import com.coenterprise.dao.ProtocolDao;
+import com.coenterprise.entity.Consumer;
 import com.coenterprise.entity.Parameter;
 import com.coenterprise.entity.ParameterValue;
 import com.coenterprise.entity.Protocol;
@@ -35,11 +36,11 @@ public class ParameterValueServiceImpl implements ParameterValueService {
 	private ConsumerDao consumerDao;
 
 	@Transactional
-	public void addParameterValue(ParameterProxy parameterProxy, TransferFormProxy transferForm) {
+	public void addParameterValue(TransferFormProxy transferForm) {
 
-		Protocol protocol = protocolDao.getProtocol(parameterProxy
-				.getProtocolIdFk());
+		Consumer consumer = consumerDao.getConsumer(transferForm.getConsumerIdFk());
 		
+		Parameter parameter = parameterDao.getParameter(transferForm.getParameterIdFk());
 
 
 		// if(protocol == null){
@@ -47,8 +48,9 @@ public class ParameterValueServiceImpl implements ParameterValueService {
 		// }
 
 		ParameterValue parameterValue = new ParameterValue();
-		parameterValue.setProtocolIdFk(protocol);
-		parameterValue.setName(parameterProxy.getName());
+		parameterValue.setParameterIdFk(parameter);
+		parameterValue.setConsumerIdFk(consumer);
+		parameterValue.setName(transferForm.getParamValue());
 
 		parameterValueDao.addParameterValue(parameterValue);
 	}

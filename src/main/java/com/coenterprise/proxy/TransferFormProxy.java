@@ -1,6 +1,5 @@
 package com.coenterprise.proxy;
 
-
 public class TransferFormProxy {
 
 	private String producerName;
@@ -10,15 +9,9 @@ public class TransferFormProxy {
 	private int protocolIdFk;
 	private int consumerIdFk;
 	private int producerIdFk;
+	private int parameterIdFk;
+
 	private int id;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getProducerName() {
 		return producerName;
@@ -74,5 +67,21 @@ public class TransferFormProxy {
 
 	public void setParamValue(String paramValue) {
 		this.paramValue = paramValue;
+	}
+
+	public int getParameterIdFk() {
+		return parameterIdFk;
+	}
+
+	public void setParameterIdFk(int parameterIdFk) {
+		this.parameterIdFk = parameterIdFk;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

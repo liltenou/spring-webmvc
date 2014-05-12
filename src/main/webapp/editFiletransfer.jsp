@@ -7,10 +7,11 @@
 	</div>
 	<!--  end page header -->
 
-	<form:form method="POST"
-		action="${pageContext.request.contextPath}/filetransfer/add/process">
-		<!-- producer filename info -->
-		<div class="form-group">
+
+	<!-- producer filename info -->
+	<div class="form-group">
+		<form:form method="POST"
+			action="${pageContext.request.contextPath}/filetransfer/add/process">
 			<div class="field">
 				<form:input class="form-control" type="text" pattern=".+"
 					required="" placeholder="Producer" path="producerName"
@@ -47,22 +48,24 @@
 									<tr>
 										<td>${params.name}<form:input class="form-control"
 												type="text" path="paramValue" /> <form:input type="hidden"
-												value="${params.id}" path="parameterIdFk" />
-											<form:input type="hidden" value="${consumer.consumerIdFk.id}"
-												path="consumerIdFk" /></td>
+												value="${params.id}" path="parameterIdFk" /> <form:input
+												type="hidden" value="" path="consumerIdFk" /></td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
 						<button style="float: right" type="submit" class="btn icon save">Submit</button>
+
 					</div>
 				</div>
-			</div>
-		</div>
+		</form:form>
+
 		<!-- end outer cascade -->
 
-	</form:form>
-	<%@ include file="WEB-INF/common/footer.jsp"%>
+	</div>
 </div>
+
+<%@ include file="WEB-INF/common/footer.jsp"%>
+
 </body>
 </html>
