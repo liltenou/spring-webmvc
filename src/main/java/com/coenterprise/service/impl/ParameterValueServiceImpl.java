@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.coenterprise.dao.ConsumerDao;
 import com.coenterprise.dao.ParameterDao;
 import com.coenterprise.dao.ParameterValueDao;
 import com.coenterprise.dao.ProtocolDao;
@@ -29,22 +30,27 @@ public class ParameterValueServiceImpl implements ParameterValueService {
 	
 	@Autowired
 	private ParameterValueDao parameterValueDao;
+	
+	@Autowired
+	private ConsumerDao consumerDao;
 
 	@Transactional
-	public void addParameterValue(ParameterProxy parameterProxy) {
+	public void addParameterValue(ParameterProxy parameterProxy, TransferFormProxy transferForm) {
 
 		Protocol protocol = protocolDao.getProtocol(parameterProxy
 				.getProtocolIdFk());
+		
+
 
 		// if(protocol == null){
 		// throw some exception
 		// }
 
-		Parameter parameter = new Parameter();
-		parameter.setProtocolIdFk(protocol);
-		parameter.setName(parameterProxy.getName());
+		ParameterValue parameterValue = new ParameterValue();
+		parameterValue.setProtocolIdFk(protocol);
+		parameterValue.setName(parameterProxy.getName());
 
-		parameterDao.addParameter(parameter);
+		parameterValueDao.addParameterValue(parameterValue);
 	}
 
 	@Transactional

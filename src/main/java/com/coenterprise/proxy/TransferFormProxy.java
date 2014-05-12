@@ -1,12 +1,12 @@
 package com.coenterprise.proxy;
 
-import com.coenterprise.entity.Protocol;
 
 public class TransferFormProxy {
 
 	private String producerName;
 	private String consumerName;
 	private String filename;
+	private String paramValue;
 	private int protocolIdFk;
 	private int consumerIdFk;
 	private int producerIdFk;
@@ -68,4 +68,11 @@ public class TransferFormProxy {
 		this.producerIdFk = producerIdFk;
 	}
 
+	public String getParamValue() {
+		return paramValue;
+	}
+
+	public void setParamValue(String paramValue) {
+		this.paramValue = paramValue;
+	}
 }

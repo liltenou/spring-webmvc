@@ -94,24 +94,23 @@ public class TransferFormController {
 	// get file transfer to edit
 	@RequestMapping(value = "/filetransfer/edit/{id}", method = RequestMethod.GET)
 	public ModelAndView editDeliveryMethod(@ModelAttribute("command") TransferFormProxy transferForm, @PathVariable Integer id) {
-		ModelAndView modeAndView = new ModelAndView("editFiletransfer");
+		ModelAndView modelAndView = new ModelAndView("editFiletransfer");
 		Consumer consumer = consumerService.getConsumer(id);
 		Protocol protocol = consumer.getProtocolIdFk();
 		Set<Parameter> parameters = protocol.getParameters();
 
-		//Parameter param = parameterService.getParameter(id);
-		//Parameter param = parameterService.getParameters()
 				
 		
 		transferForm.setId(consumer.getId());
 //		transferForm.setProtocolIdFk(consumer.getProtocolIdFk().getId());
 		
 		
-		modeAndView.addObject("consumer", consumer);
-		modeAndView.addObject("parameters", parameters);
+		modelAndView.addObject("consumer", consumer);
+		modelAndView.addObject("parameters", parameters);
+		modelAndView.addObject("paramValue", new ParameterValue());
 
 		
-		return modeAndView;
+		return modelAndView;
 	}
 
 	// edit filetransfer

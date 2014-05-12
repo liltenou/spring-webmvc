@@ -29,6 +29,7 @@ public class ParameterServiceImpl implements ParameterService {
 
 		Protocol protocol = protocolDao.getProtocol(parameterProxy
 				.getProtocolIdFk());
+		
 
 		// if(protocol == null){
 		// throw some exception

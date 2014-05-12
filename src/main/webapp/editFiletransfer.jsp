@@ -43,9 +43,13 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${parameters}" var="param">
+								<c:forEach items="${parameters}" var="params">
 									<tr>
-										<td><c:out value="${param}"/><br/></td>
+										<td>${params.name}<form:input class="form-control"
+												type="text" path="paramValue" /> <form:input type="hidden"
+												value="${params.id}" path="parameterIdFk" />
+											<form:input type="hidden" value="${consumer.consumerIdFk.id}"
+												path="consumerIdFk" /></td>
 									</tr>
 								</c:forEach>
 							</tbody>
