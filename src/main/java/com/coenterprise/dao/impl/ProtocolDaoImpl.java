@@ -100,4 +100,9 @@ public class ProtocolDaoImpl implements ProtocolDao {
 		return query.list();
 	}
 
+	public Protocol getProtocol(Protocol protocol) {
+		Protocol protocoltest = (Protocol) getCurrentSession().get(Protocol.class, sessionFactory);
+		return protocoltest;
+	}
+
 }

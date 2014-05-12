@@ -1,47 +1,48 @@
 package com.coenterprise.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 //import javax.persistence.DiscriminatorType;
 //import javax.persistence.DiscriminatorValue;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-
 
 @Table(name = "CONSUMER")
 @Entity
 public class Consumer {
 
-
 	// @GeneratedValue(generator = "UniqueIDGenConsumer")
 	// @SequenceGenerator(name = "UniqueIDGenConsumer", sequenceName =
 	// "ID_SEQ_CONSUMER", allocationSize = 1)
-	@Id	@Column(name = "ID")
+	@Id
+	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@Column(name = "NAME") private String name;
 
-	@ManyToOne @JoinColumn(name = "PROTOCOL_ID_FK", referencedColumnName="ID")
+	@Column(name = "NAME")
+	private String name;
+
+	@ManyToOne
+	@JoinColumn(name = "PROTOCOL_ID_FK", referencedColumnName = "ID")
 	private Protocol protocolIdFk;
-	
-	@ManyToOne @JoinColumn(name = "PROCUDER_ID_FK", referencedColumnName="ID")
+
+	@ManyToOne
+	@JoinColumn(name = "PRODUCER_ID_FK", referencedColumnName = "ID")
 	private Producer producerIdFk;
+
+	@OneToMany(mappedBy = "consumerIdFk", fetch = FetchType.EAGER)
+	private Set<ParameterValue> paramValues;
 
 	public Integer getId() {
 		return id;
@@ -74,4 +75,13 @@ public class Consumer {
 	public void setProducerIdFk(Producer producerIdFk) {
 		this.producerIdFk = producerIdFk;
 	}
+
+	public Set<ParameterValue> getParamValues() {
+		return paramValues;
+	}
+
+	public void setParamValues(Set<ParameterValue> paramValues) {
+		this.paramValues = paramValues;
+	}
+
 }

@@ -1,31 +1,37 @@
 package com.coenterprise.service.impl;
 
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.coenterprise.dao.ParameterDao;
+import com.coenterprise.dao.ParameterValueDao;
 import com.coenterprise.dao.ProtocolDao;
 import com.coenterprise.entity.Parameter;
+import com.coenterprise.entity.ParameterValue;
 import com.coenterprise.entity.Protocol;
 import com.coenterprise.proxy.ParameterProxy;
+import com.coenterprise.proxy.TransferFormProxy;
 import com.coenterprise.service.ParameterService;
+import com.coenterprise.service.ParameterValueService;
 
 
 @Service
 @Transactional
-public class ParameterServiceImpl implements ParameterService {
+public class ParameterValueServiceImpl implements ParameterValueService {
 	@Autowired
 	private ParameterDao parameterDao;
 
 	@Autowired
 	private ProtocolDao protocolDao;
+	
+	@Autowired
+	private ParameterValueDao parameterValueDao;
 
 	@Transactional
-	public void addParameter(ParameterProxy parameterProxy) {
+	public void addParameterValue(ParameterProxy parameterProxy) {
 
 		Protocol protocol = protocolDao.getProtocol(parameterProxy
 				.getProtocolIdFk());
@@ -42,30 +48,32 @@ public class ParameterServiceImpl implements ParameterService {
 	}
 
 	@Transactional
-	public void editParameter(ParameterProxy proxy) {
-		Parameter parameter = parameterDao.getParameter(proxy.getId());
-		parameter.setName(proxy.getName());
-		parameterDao.editParameter(parameter);
+	public void editParameterValue(ParameterValue parameterValue) {
+		parameterValueDao.editParameterValue(parameterValue);
 	}
 
 	@Transactional
-	public Parameter getParameter(int id) {
-		return parameterDao.getParameter(id);
+	public ParameterValue getParameterValue(int id) {
+		return parameterValueDao.getParameterValue(id);
 	}
 
 	@Transactional
-	public void deleteParameter(int id) {
-		parameterDao.deleteParameter(id);
+	public void deleteParameterValue(int id) {
+		parameterValueDao.deleteParameterValue(id);
 	}
 
 	@Transactional
-	public Set<Parameter> getParameters() {
-		return parameterDao.getParameters();
+	public List<ParameterValue> getParameterValues() {
+		return parameterValueDao.getParameterValues();
 	}
 
-	public List<String> getName() {
+	public List<ParameterValue> getParametersValue() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	public ParameterValue addParameterValue(ParameterValue parameterValue) {
+		return parameterValueDao.addParameterValue(parameterValue);
+		
+	}
 }

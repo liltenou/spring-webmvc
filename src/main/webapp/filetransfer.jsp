@@ -38,15 +38,22 @@
 							</c:forEach>
 						</form:select>
 					</div>
-									<button style="float: right" type="submit" class="btn icon save">Submit</button>
-					
+					<div class="field">
+						<script type="text/javascript">
+							$(document).ready(function() {
+								console.log("Welcome to jQuery.");
+							});
+						</script>
+					</div>
+					<button style="float: right" type="submit" class="btn icon save">Submit</button>
+
 				</div>
 
-<!-- 				<div class="cascade"> -->
-<!-- 					<div class="form-group" id="property-group"> -->
-<!-- 						<div class="form-group" id="property-new"></div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
+				<!-- 				<div class="cascade"> -->
+				<!-- 					<div class="form-group" id="property-group"> -->
+				<!-- 						<div class="form-group" id="property-new"></div> -->
+				<!-- 					</div> -->
+				<!-- 				</div> -->
 			</div>
 
 		</div>

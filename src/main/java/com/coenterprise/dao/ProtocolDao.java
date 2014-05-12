@@ -15,7 +15,8 @@ import java.util.List;
 public interface ProtocolDao {
 	public void addProtocol(Protocol protocol);
 	public void editProtocol(Protocol protocol);
-	public Protocol getProtocol(int id);
+	public Protocol getProtocol(Protocol protocol);
+	public Protocol getProtocol(int id); //added above
 	public void deleteProtocol(int id);
 	public List <Protocol> getProtocols();
 	public List <String> getName();

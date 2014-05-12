@@ -10,12 +10,12 @@ public class MainPageController {
 
 	@RequestMapping(value="/")
 	public ModelAndView mainPage() {
-		return new ModelAndView("listroute");
+		return new ModelAndView("redirect:/filetransfer/list");
 	}
 
 	@RequestMapping(value="/index")
 	public ModelAndView indexPage() {
-		return new ModelAndView("listroute");
+		return new ModelAndView("redirect:/filetransfer/list");
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.coenterprise.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,6 +27,17 @@ public class Producer {
 	@Column(name="NAME")private String name;
 	
 	@Column(name="FILENAME")private String filename;
+	
+	@OneToMany(mappedBy = "producerIdFk", fetch = FetchType.EAGER)
+	private Set<Consumer> consumers;
+
+	public Set<Consumer> getConsuemrs() {
+		return consumers;
+	}
+
+	public void setConsuemrs(Set<Consumer> consumers) {
+		this.consumers = consumers;
+	}
 
 	public Integer getId() {
 		return id;

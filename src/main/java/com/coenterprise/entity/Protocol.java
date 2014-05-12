@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import java.util.List;
 import java.util.Set;
 
 @Table(name = "PROTOCOL")
@@ -28,6 +29,25 @@ public class Protocol {
 
 	@OneToMany(mappedBy = "protocolIdFk", fetch = FetchType.EAGER)
 	private Set<Parameter> parameters;
+
+	public Set<Parameter> getParameters() {
+		return parameters;
+	}
+
+	public void setParameters(Set<Parameter> parameters) {
+		this.parameters = parameters;
+	}
+
+	@OneToMany(mappedBy = "protocolIdFk", fetch = FetchType.EAGER)
+	private Set<Consumer> consumers;
+
+	public Set<Consumer> getConsumers() {
+		return consumers;
+	}
+
+	public void setConsumers(Set<Consumer> consumers) {
+		this.consumers = consumers;
+	}
 
 	public Integer getId() {
 		return id;
@@ -53,11 +73,4 @@ public class Protocol {
 		this.name = name;
 	}
 
-	public Set<Parameter> getParameters() {
-		return parameters;
-	}
-
-	public void setParameters(Set<Parameter> parameters) {
-		this.parameters = parameters;
-	}
 }

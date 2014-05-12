@@ -23,12 +23,14 @@ public class ParameterValue {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name="NAME") private String name;
+	@Column(name="PARAM_VALUE") private String name;
 	
 	@ManyToOne @JoinColumn(name = "CONSUMER_ID_FK", referencedColumnName="ID")
 	private Consumer consumerIdFk;
 	@ManyToOne @JoinColumn(name = "PARAMETER_ID_FK", referencedColumnName="ID")
 	private Parameter parameterIdFk;
+	
+	
 	
 	public Integer getId() {
 		return id;
